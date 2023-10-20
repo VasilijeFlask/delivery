@@ -4,3 +4,42 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open Sans/OpenSans-Regular.woff2') format('woff2'),
+         url('fonts/Open Sans/OpenSans-Regular.woff') format('woff');
+    font-weight: 400; /* Regular */
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open Sans/OpenSans-Bold.woff2') format('woff2'),
+         url('fonts/Open Sans/OpenSans-Bold.woff') format('woff');
+    font-weight: 700; /* Bold */
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open Sans/OpenSans-Light.woff2') format('woff2'),
+         url('fonts/Open Sans/OpenSans-Light.woff') format('woff');
+    font-weight: 300; /* Light */
+    font-style: normal;
+  }
+  
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+  
+header {
+    background-color: red;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 24px;
+}
