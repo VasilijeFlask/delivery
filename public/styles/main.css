@@ -38,15 +38,26 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0px;
+    padding: 17px 0px;
+}
+
+header .logo-wicon {
+    display: flex;
+    color: #D1544E;
+}
+
+header .logo-wicon span {
+    padding-left: 1px;
+    font-style: italic;
 }
 
 header .logo {
     color:#D1544E;
-    font-size: 25px;
+    font-size: 32px;
     font-weight: 800;
     cursor: default;
-    padding-left: 100px;
+    margin-left: 100px;
+    font-style: italic;
 }
 
 header nav {
@@ -59,10 +70,19 @@ header nav a {
     font-weight: 700;
     font-size: 18px;
     background-color: #3ABCEE;
-    padding: 7px 15px;
+    padding: 7px 20px;
     border-radius: 100px;
+    border: 1px solid #D3D3D3;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+
+
 }
 
+header nav .log-in {
+    color: #5A5A5A;
+    background-color: white;
+    margin-right: 15px;
+}
 
 .main-content {
     background-color: #e6a39f  ;
@@ -71,21 +91,26 @@ header nav a {
     color: #5A5A5A;
     padding-top: 100px;
     padding-bottom: 100px;
+    border: 1px solid #d3d3d3;
 }
 
 .main-text {
     position: relative;
     top: 150px;
+    letter-spacing: 1px;
+
 }
 
 .main-content h1 {
-    font-size: 50px;
+    font-size: 52px;
     color: white;
     cursor: default;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    
 }
 
 .main-content button {
-    padding: 20px 70px;
+    padding: 20px 50px;
     font-size: 25px;
     background-color: #3ABCEE;
     border: none;
@@ -94,6 +119,13 @@ header nav a {
     font-weight: 700;
     margin-top: 20px;
     cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    right: 5px;
+}
+
+.main-content button:hover {
+    background-color: #34a9d6;
 }
 
 .main-img img {
