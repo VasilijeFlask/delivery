@@ -36,20 +36,25 @@ body {
 header {
     background-color: white;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 20px 0px;
 }
 
 header .logo {
-    color: black;
+    color:#D1544E;
     font-size: 25px;
-    font-weight: 700;
+    font-weight: 800;
     cursor: default;
+    padding-left: 100px;
+}
+
+header nav {
+    padding-right: 50px;
 }
 
 header nav a {
-    color: black;
+    color: white;
     text-decoration: none;
     font-weight: 700;
     font-size: 18px;
@@ -68,6 +73,11 @@ header nav a {
     padding-bottom: 100px;
 }
 
+.main-text {
+    position: relative;
+    top: 150px;
+}
+
 .main-content h1 {
     font-size: 50px;
     color: white;
@@ -82,7 +92,7 @@ header nav a {
     border-radius: 100px;
     color: white;
     font-weight: 700;
-    margin-top: 50px;
+    margin-top: 20px;
     cursor: pointer;
 }
 
