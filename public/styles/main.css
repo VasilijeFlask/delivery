@@ -74,8 +74,6 @@ header nav a {
     border-radius: 100px;
     border: 1px solid #D3D3D3;
     box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
-
-
 }
 
 header nav .log-in {
@@ -84,13 +82,21 @@ header nav .log-in {
     margin-right: 15px;
 }
 
+header nav .log-in:hover {
+    background-color: #ededed;
+}
+
+header nav .sign-up:hover {
+    background-color: #34a9d6;
+}
+
 .main-content {
     background-color: #e6a39f  ;
     display: flex;
     justify-content: space-evenly;
     color: #5A5A5A;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 152px;
+    padding-bottom: 152px;
     border: 1px solid #d3d3d3;
 }
 
@@ -132,4 +138,28 @@ header nav .log-in {
     height: 500px;
     width: 500px;
     border-radius: 330px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 13px 0px;
+    font-size: 21px;
+    font-weight: 700;
+    background-color: #d66962;
+    gap: 90px;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+.work-hours {
+    color: white;
+    cursor: default;
+}
+
+footer a:hover {
+    color: #f6dddc;
 }
