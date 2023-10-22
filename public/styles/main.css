@@ -55,7 +55,7 @@ header .logo {
     color:#D1544E;
     font-size: 32px;
     font-weight: 800;
-    cursor: default;
+    text-decoration: none;
     margin-left: 100px;
     font-style: italic;
 }
@@ -156,7 +156,7 @@ footer a {
 }
 
 .work-hours {
-    color:#D1544E;
+    color:#bb3731;
     cursor: default;
 }
 
