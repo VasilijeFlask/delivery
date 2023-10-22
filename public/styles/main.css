@@ -146,20 +146,20 @@ footer {
     padding: 13px 0px;
     font-size: 21px;
     font-weight: 700;
-    background-color: #d66962;
+    background-color: white;
     gap: 90px;
 }
 
 footer a {
     text-decoration: none;
-    color: white;
+    color: #D1544E;
 }
 
 .work-hours {
-    color: white;
+    color:#D1544E;
     cursor: default;
 }
 
 footer a:hover {
-    color: #f6dddc;
+    color: #a7312b;
 }
