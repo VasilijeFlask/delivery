@@ -1,38 +1,40 @@
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Fonts */
 @font-face {
     font-family: 'Open Sans';
     src: url('fonts/Open Sans/OpenSans-Regular.woff2') format('woff2'),
          url('fonts/Open Sans/OpenSans-Regular.woff') format('woff');
     font-weight: 400; /* Regular */
     font-style: normal;
-  }
-  
+}
+
 @font-face {
     font-family: 'Open Sans';
     src: url('fonts/Open Sans/OpenSans-Bold.woff2') format('woff2'),
          url('fonts/Open Sans/OpenSans-Bold.woff') format('woff');
     font-weight: 700; /* Bold */
     font-style: normal;
-  }
-  
+}
+
 @font-face {
     font-family: 'Open Sans';
     src: url('fonts/Open Sans/OpenSans-Light.woff2') format('woff2'),
          url('fonts/Open Sans/OpenSans-Light.woff') format('woff');
     font-weight: 300; /* Light */
     font-style: normal;
-  }
-  
-
-body {
-    font-family: 'Open Sans', sans-serif;
 }
-  
+
+/* Header Styles */
 header {
     background-color: white;
     display: flex;
@@ -52,7 +54,7 @@ header .logo-wicon span {
 }
 
 header .logo {
-    color:#D1544E;
+    color: #D1544E;
     font-size: 32px;
     font-weight: 800;
     text-decoration: none;
@@ -90,8 +92,9 @@ header nav .sign-up:hover {
     background-color: #34a9d6;
 }
 
+/* Main Content Styles */
 .main-content {
-    background-color: #e6a39f  ;
+    background-color: #e6a39f;
     display: flex;
     justify-content: space-evenly;
     color: #5A5A5A;
@@ -104,18 +107,16 @@ header nav .sign-up:hover {
     position: relative;
     top: 150px;
     letter-spacing: 1px;
-
 }
 
 .main-content h1 {
     font-size: 52px;
     color: white;
     cursor: default;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.main-content button {
+.main-content a {
     padding: 20px 50px;
     font-size: 25px;
     background-color: #3ABCEE;
@@ -123,14 +124,15 @@ header nav .sign-up:hover {
     border-radius: 100px;
     color: white;
     font-weight: 700;
-    margin-top: 20px;
     cursor: pointer;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     position: relative;
     right: 5px;
+    text-decoration: none;
+    top: 40px;
 }
 
-.main-content button:hover {
+.main-content a:hover {
     background-color: #34a9d6;
 }
 
@@ -140,6 +142,7 @@ header nav .sign-up:hover {
     border-radius: 330px;
 }
 
+/* Footer Styles */
 footer {
     display: flex;
     justify-content: center;
@@ -156,7 +159,7 @@ footer a {
 }
 
 .work-hours {
-    color:#bb3731;
+    color: #bb3731;
     cursor: default;
 }
 
