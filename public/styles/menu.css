@@ -3,3 +3,48 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+
+.view-order  {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    background-color: #3ABCEE;
+    border-radius: 100px;
+    border: 1px solid #D3D3D3;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    padding: 7px 20px;
+    gap: 30px;
+}
+
+.view-order:hover {
+    background-color: #34a9d6;
+}
+
+.view-order .number-icon {
+    padding: 4px 10px;
+    color: #3ABCEE;
+    background-color: white;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.view-order .order {
+    letter-spacing: 0.5 px;
+}
+
+.view-order .price {
+    font-weight: 500;
+}
