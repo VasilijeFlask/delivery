@@ -7,10 +7,12 @@
 header {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
-
+header .logo-wicon {
+    margin-left: 55px;
+}
 
 .view-order  {
     display: flex;
@@ -26,6 +28,7 @@ header {
     cursor: pointer;
     padding: 7px 20px;
     gap: 30px;
+    margin-right: 155px;
 }
 
 .view-order:hover {
@@ -47,4 +50,35 @@ header {
 
 .view-order .price {
     font-weight: 500;
+}
+
+.menu-nav {
+    border-top: 1px solid #D3D3D3;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 0px;
+    font-weight: 600;
+    font-size: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.menu-nav a {
+    color: #5A5A5A;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 100px;
+}
+
+.menu-nav a:hover {
+    color:#3ABCEE
+}
+
+.menu-nav a:focus {
+    background-color: #ebf8fd;
+    color:#3ABCEE
+
 }
