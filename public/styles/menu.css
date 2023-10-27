@@ -80,5 +80,77 @@ header .logo-wicon {
 .menu-nav a:focus {
     background-color: #ebf8fd;
     color:#3ABCEE
-
 }
+
+.menu {
+    width: 84%;
+    margin: auto;
+    color: #5A5A5A;
+    padding-top: 30px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; 
+    padding-top: 10px;
+}
+
+.grid-item {
+    border: 1px solid #D3D3D3; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: scale 0.3s ease; 
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: default;
+}
+.grid-item:hover {
+    scale: 1.03;
+}
+
+.grid-item img {
+    height: 150px;
+    width: 150px;
+    border-radius: 5px;
+}
+
+.food {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.add-item {
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #D3D3D3;
+    color: white;
+    background-color: #3ABCEE;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    height: 30px;
+    width: 70%;
+}
+
+.food-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.food-info .desc {
+    padding: 8px 0px;
+    color: #808080;
+}
+
+.food-info h3 {
+    font-size: 16px;
+}
+
+.food-info .price {
+    color:#34a9d6;
+}
+
