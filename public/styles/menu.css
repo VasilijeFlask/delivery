@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    scroll-behavior: smooth;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -29,6 +33,10 @@ header .logo-wicon {
     padding: 7px 20px;
     gap: 30px;
     margin-right: 155px;
+}
+
+h2 {
+    color: #D1544E;
 }
 
 .view-order:hover {
@@ -64,6 +72,7 @@ header .logo-wicon {
     position: sticky;
     top: 0;
     z-index: 100;
+    background-color: white;
 }
 
 .menu-nav a {
@@ -154,3 +163,16 @@ header .logo-wicon {
     color:#34a9d6;
 }
 
+.hl {
+    height: 2px;
+    background-color: #D3D3D3;
+}
+
+.type {
+    padding-bottom: 70px;
+    padding-top: 40px;
+}
+
+.first-type {
+    padding-top: 30px
+}
