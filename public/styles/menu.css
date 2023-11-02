@@ -80,15 +80,16 @@ h2 {
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 100px;
+    letter-spacing: 0.5px;
 }
 
 .menu-nav a:hover {
-    color:#3ABCEE
+    color: #D1544E;
 }
 
 .menu-nav a:focus {
-    background-color: #ebf8fd;
-    color:#3ABCEE
+    background-color: #f5dcdb ;
+    color: #D1544E;
 }
 
 .menu {
@@ -175,4 +176,12 @@ h2 {
 
 .first-type {
     padding-top: 30px
+}
+
+.last-type {
+    padding-bottom: 300px;
+}
+
+footer {
+    border-top: 2px solid #D3D3D3;
 }
