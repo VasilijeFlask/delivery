@@ -85,12 +85,15 @@ h2 {
 
 .menu-nav a:hover {
     color: #D1544E;
+    background-color: #f5dcdb ;
+
 }
 
-.menu-nav a:focus {
+#menu-nav a.active {
     background-color: #f5dcdb ;
     color: #D1544E;
 }
+
 
 .menu {
     width: 84%;
