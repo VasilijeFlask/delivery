@@ -37,6 +37,7 @@ header .logo-wicon {
 
 h2 {
     color: #D1544E;
+    font-size: 26px;
 }
 
 .view-order:hover {
@@ -125,7 +126,7 @@ h2 {
 
 .grid-item img {
     height: 150px;
-    width: 150px;
+    width: 220px;
     border-radius: 5px;
 }
 
@@ -157,6 +158,7 @@ h2 {
 .food-info .desc {
     padding: 8px 0px;
     color: #808080;
+    letter-spacing: 0.5px;
 }
 
 .food-info h3 {
