@@ -50,6 +50,13 @@ h2 {
     font-weight: 500;
 }
 
+.order-expand {
+    max-height: 0px;
+    display: none;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
 .menu-nav {
     border-top: 1px solid #D3D3D3;
     box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);

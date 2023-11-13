@@ -83,6 +83,18 @@ document.querySelectorAll('.add-item').forEach(button => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('.view-order').addEventListener('click', function() {
+    var expand = document.querySelector('.order-expand');
+    if (expand.style.display === 'none') {
+      expand.style.display = 'block';
+      expand.style.maxHeight = expand.scrollHeight + 'px';
+    } else {
+      expand.style.display = 'none';
+      expand.style.maxHeight = null;
+    }
+  });
+});
 
 
 
