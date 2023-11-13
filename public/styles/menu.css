@@ -8,16 +8,6 @@ body {
     scroll-behavior: smooth;
 }
 
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-header .logo-wicon {
-    margin-left: 55px;
-}
-
 .view-order  {
     display: flex;
     align-items: center;
@@ -32,7 +22,6 @@ header .logo-wicon {
     cursor: pointer;
     padding: 7px 20px;
     gap: 30px;
-    margin-right: 155px;
 }
 
 h2 {
@@ -66,7 +55,7 @@ h2 {
     box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 20px 0px;
     font-weight: 600;
     font-size: 14px;
@@ -79,9 +68,10 @@ h2 {
 .menu-nav a {
     color: #5A5A5A;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 10px 40px;
     border-radius: 100px;
     letter-spacing: 0.5px;
+    font-size: 15px;
 }
 
 .menu-nav a:hover {

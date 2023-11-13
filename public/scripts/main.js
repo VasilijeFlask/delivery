@@ -43,6 +43,7 @@ function updateActiveNav() {
   });
 }
 
+
 function getElementOffset(element, navbarHeight) {
 
   var rect = element.getBoundingClientRect();
