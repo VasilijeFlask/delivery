@@ -166,3 +166,7 @@ footer a {
 footer a:hover {
     color: #a7312b;
 }
+
+.hl {
+    margin: 10px 0px;
+}

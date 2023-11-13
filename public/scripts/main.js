@@ -64,21 +64,24 @@ let order = {
 viewOrder = document.querySelector('.view-order');
 
 function updateOrderDisplay() {
-
-  numberIcon = document.querySelector('.number-icon').innerHTML;
-  price = document.querySelector('.price').innerHTML;
-
-  console.log(numberIcon)
-};
+  document.querySelector('.number-icon').textContent = order.itemCount;
+  document.querySelector('.price').textContent = 'RSD ' + order.totalCost.toFixed(2);
+}
 
 document.querySelectorAll('.add-item').forEach(button => {
   button.addEventListener('click', (event) => {
-    numberIcon += 1
-    price += price
-    console.log(price)
-  updateOrderDisplay()
-  })
+
+    order.itemCount += 1;
+    
+    const itemPriceElement = button.parentElement.querySelector('.price');
+    const itemPrice = parseFloat(itemPriceElement.textContent.replace('RSD ', ''));
+
+    order.totalCost += itemPrice;
+
+    updateOrderDisplay();
+  });
 });
+
 
 
 
