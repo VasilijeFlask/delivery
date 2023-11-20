@@ -50,7 +50,7 @@ h2 {
     font-weight: 500;
 }
 
-.order-expand {
+.expand-order {
     max-height: 0px;
     display: none;
     overflow: hidden;

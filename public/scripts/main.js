@@ -56,7 +56,6 @@ function getElementOffset(element, navbarHeight) {
 window.addEventListener('scroll', updateActiveNav);
 
 // <<< ADDING ITEMS TO CART >>> //
-
 let order = {
   itemCount: 0,
   totalCost: 0
@@ -83,18 +82,31 @@ document.querySelectorAll('.add-item').forEach(button => {
   });
 });
 
+// <<< DISPLAYING TOTAL ORDER >>> //
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelector('.view-order').addEventListener('click', function() {
-    var expand = document.querySelector('.order-expand');
-    if (expand.style.display === 'none') {
-      expand.style.display = 'block';
-      expand.style.maxHeight = expand.scrollHeight + 'px';
-    } else {
-      expand.style.display = 'none';
-      expand.style.maxHeight = null;
-    }
+  var viewOrder = document.querySelector('.view-order');
+  var expandOrder = document.querySelector('.expand-order');
+  
+  // Event listener to expand the order
+  viewOrder.addEventListener('click', function() {
+    viewOrder.style.display = 'none';
+    expandOrder.style.display = 'block';
+    expandOrder.style.maxHeight = expandOrder.scrollHeight + 'px';
+  });
+
+  // Event listener to collapse the order
+  expandOrder.addEventListener('click', function() {
+    expandOrder.style.display = 'none';
+    expandOrder.style.maxHeight = '0';
+    viewOrder.style.display = 'flex';
   });
 });
+
+
+
+
+
+
 
 
 
