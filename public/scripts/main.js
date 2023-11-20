@@ -86,21 +86,25 @@ document.querySelectorAll('.add-item').forEach(button => {
 document.addEventListener('DOMContentLoaded', function() {
   var viewOrder = document.querySelector('.view-order');
   var expandOrder = document.querySelector('.expand-order');
+  var overlay = document.querySelector('.overlay');
   
-  // Event listener to expand the order
   viewOrder.addEventListener('click', function() {
-    viewOrder.style.display = 'none';
-    expandOrder.style.display = 'block';
-    expandOrder.style.maxHeight = expandOrder.scrollHeight + 'px';
+    expandOrder.style.opacity = '1';
+    expandOrder.style.visibility = 'visible';
+    expandOrder.style.maxHeight = '95%'; 
+    overlay.style.display = 'block';
   });
 
-  // Event listener to collapse the order
-  expandOrder.addEventListener('click', function() {
-    expandOrder.style.display = 'none';
+  overlay.addEventListener('click', function() {
+    expandOrder.style.opacity = '0';
+    expandOrder.style.visibility = 'hidden';
     expandOrder.style.maxHeight = '0';
-    viewOrder.style.display = 'flex';
+    overlay.style.display = 'none';
+    viewOrder.style.display = 'flex'; 
   });
 });
+
+
 
 
 

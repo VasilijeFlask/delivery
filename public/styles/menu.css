@@ -6,6 +6,18 @@
 
 body {
     scroll-behavior: smooth;
+    position: relative;
+}
+
+.overlay {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    top: 0; /* Cover the whole screen */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    z-index: 999; /* Below the expanded element, above everything else */
 }
 
 .view-order  {
@@ -27,6 +39,7 @@ body {
 h2 {
     color: #D1544E;
     font-size: 26px;
+    cursor: default;
 }
 
 .view-order:hover {
@@ -51,10 +64,27 @@ h2 {
 }
 
 .expand-order {
-    max-height: 0px;
-    display: none;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    height: 100vh;
+    width: 60vh;
+    background-color: blue;
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    z-index: 1000;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out, max-height 0.5s ease-out;
+    overflow: hidden;
+}
+
+.expand-order.show {
+    opacity: 1;
+    visibility: visible;
+    max-height: 500px; /* Set to the maximum height you expect the content to be */
 }
 
 .menu-nav {
