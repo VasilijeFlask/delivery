@@ -7,6 +7,7 @@
 body {
     scroll-behavior: smooth;
     position: relative;
+    letter-spacing: 0.5px;
 }
 
 .overlay {
@@ -109,34 +110,139 @@ h2 {
     justify-content: space-between;
 }
 
-.expand-order h3 {
+.order-details {
+    padding-top: 30px;
+}
+
+.order-details h3 {
     cursor: default;
+    font-size: 26px;
+    color: #D1544E;
+    font-weight: 900;
+    padding-bottom: 20px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #5A5A5A;
+}
+
+.left {
+    display: flex;
 }
 
 .name {
     cursor: default;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 20px;
 }
 
-.right i{
+.name > :first-child {
+    font-weight: 600;
+}
+
+.name > :nth-child(2) {
+    color: #34a9d6;
+}
+
+.right {
+    background-color: #eaf6fa ;
+    padding: 5px 10px 5px 18px;
+    border-radius: 5px;
+    color: #34a9d6;
+}
+
+.right * {
+    padding-right: 15px;
+    font-size: 18px;
     cursor: pointer;
+}
+
+.right *:hover {
+    transform: scale(1.03);
 }
 
 .right span {
     cursor: default;
+    font-weight: 600;
 }
 
 .img {
     height: 50px;
     width: 80px;
+    border-radius: 5px;
+}
+
+.comm-check {
+    border-top: 1px solid #D3D3D3;
+    padding-top: 20px;
 }
 
 .comments {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
+.comm-left {
+    display: flex;
+}
 
+.comm-left i {
+    color: #3ABCEE;
+    padding-right: 15px;
+}
 
+.comm-header {
+    color:#5A5A5A ;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: default;
+}
+
+.comm-desc {
+    color: #5A5A5A;
+    font-size: 14px;
+    cursor: default;
+
+}
+
+.edit {
+    color: white;
+    background-color: #3ABCEE;
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid #D3D3D3;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.edit:hover {
+    background-color: #34a9d6;
+}
+
+.checkout {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    background-color: #3ABCEE;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.checkout:hover {
+    background-color: #34a9d6;
+}
 
 
 
