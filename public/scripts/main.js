@@ -71,6 +71,7 @@ function updateOrderDisplay() {
 document.querySelectorAll('.add-item').forEach(button => {
   button.addEventListener('click', (event) => {
 
+    
     order.itemCount += 1;
     
     const itemPriceElement = button.parentElement.querySelector('.price');
@@ -87,11 +88,12 @@ document.addEventListener('DOMContentLoaded', function() {
   var viewOrder = document.querySelector('.view-order');
   var expandOrder = document.querySelector('.expand-order');
   var overlay = document.querySelector('.overlay');
+  var exit = document.querySelector('.exit')
   
   viewOrder.addEventListener('click', function() {
     expandOrder.style.opacity = '1';
     expandOrder.style.visibility = 'visible';
-    expandOrder.style.maxHeight = '95%'; 
+    expandOrder.style.maxHeight = '96%'; 
     overlay.style.display = 'block';
   });
 
@@ -102,6 +104,14 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.style.display = 'none';
     viewOrder.style.display = 'flex'; 
   });
+
+  exit.addEventListener('click', function() {
+    expandOrder.style.opacity = '0';
+    expandOrder.style.visibility = 'hidden';
+    expandOrder.style.maxHeight = '0';
+    overlay.style.display = 'none';
+    viewOrder.style.display = 'flex';
+  })
 });
 
 

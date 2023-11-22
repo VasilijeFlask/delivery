@@ -67,18 +67,20 @@ h2 {
     overflow: hidden;
     height: 100vh;
     width: 60vh;
-    background-color: blue;
+    background-color: white;
     position: fixed;
-    top: 25px;
-    right: 30px;
+    top: 20px;
+    right: 100px;
     z-index: 1000;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-radius: 20px;
     opacity: 0;
     visibility: hidden;
     max-height: 0;
     transition: opacity 0.5s ease-out, visibility 0.5s ease-out, max-height 0.5s ease-out;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    
 }
 
 .expand-order.show {
@@ -86,6 +88,57 @@ h2 {
     visibility: visible;
     max-height: 500px; /* Set to the maximum height you expect the content to be */
 }
+
+.expand-order .exit {
+    position: relative;
+    left: 520px;
+    bottom: 423px;
+    color: #808080;
+    cursor: pointer;
+}
+
+.expand-order .exit:hover {
+    color: #5A5A5A;
+}
+
+.expanded-holder {
+    width: 90%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.expand-order h3 {
+    cursor: default;
+}
+
+.name {
+    cursor: default;
+}
+
+.right i{
+    cursor: pointer;
+}
+
+.right span {
+    cursor: default;
+}
+
+.img {
+    height: 50px;
+    width: 80px;
+}
+
+.comments {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+
+
 
 .menu-nav {
     border-top: 1px solid #D3D3D3;
