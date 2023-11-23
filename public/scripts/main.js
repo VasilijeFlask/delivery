@@ -56,32 +56,61 @@ function getElementOffset(element, navbarHeight) {
 window.addEventListener('scroll', updateActiveNav);
 
 // <<< ADDING ITEMS TO CART >>> //
-let order = {
-  itemCount: 0,
-  totalCost: 0
-};
-
-viewOrder = document.querySelector('.view-order');
-
-function updateOrderDisplay() {
-  document.querySelector('.number-icon').textContent = order.itemCount;
-  document.querySelector('.price').textContent = 'RSD ' + order.totalCost.toFixed(2);
-}
+let orderItems = {}; 
 
 document.querySelectorAll('.add-item').forEach(button => {
-  button.addEventListener('click', (event) => {
+  button.addEventListener('click', event => {
+    const gridItem = button.closest('.grid-item');
+    const itemId = gridItem.dataset.id;
+    const itemName = gridItem.querySelector('h3').textContent;
+    const itemPrice = gridItem.querySelector('.price').textContent;
+    const itemImageSrc = gridItem.querySelector('img').src;
 
-    
-    order.itemCount += 1;
-    
-    const itemPriceElement = button.parentElement.querySelector('.price');
-    const itemPrice = parseFloat(itemPriceElement.textContent.replace('RSD ', ''));
+    // Add item to order if it hasn't been added yet
+    if (!orderItems[itemId]) {
+      orderItems[itemId] = {
+        name: itemName,
+        price: parseFloat(itemPrice.replace('RSD ', '')),
+        count: 1,
+        imageSrc: itemImageSrc
+      };
 
-    order.totalCost += itemPrice;
+      // Call function to update the order display
+      addItemToOrderDisplay(itemId);
+    }
 
-    updateOrderDisplay();
+    // Disable the "Dodaj" button for this item
+    button.disabled = true;
   });
 });
+
+function addItemToOrderDisplay(itemId) {
+  const item = orderItems[itemId];
+  const orderDetailsContainer = document.querySelector('.order-details'); // The container where you want to add the item
+
+  // Create the HTML for the order item
+  const orderItemHtml = `
+    <div class="order-item" data-id="${itemId}">
+      <div class="left">
+        <div><img class="img" src="${item.imageSrc}" alt="${item.name}"></div>
+        <div class="name">
+          <span>${item.name}</span>
+          <span>RSD ${item.price.toFixed(2)}</span>
+        </div>
+      </div>
+      <div class="right">
+        <i class="fa fa-minus" aria-hidden="true"></i>
+        <span>${item.count}</span>
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </div>
+    </div>
+  `;
+
+  // Append the item to the order details container
+  orderDetailsContainer.insertAdjacentHTML('beforeend', orderItemHtml);
+}
+
 
 // <<< DISPLAYING TOTAL ORDER >>> //
 document.addEventListener('DOMContentLoaded', function() {

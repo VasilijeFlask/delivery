@@ -244,7 +244,12 @@ h2 {
     background-color: #34a9d6;
 }
 
-
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    align-items: center;
+}
 
 .menu-nav {
     border-top: 1px solid #D3D3D3;
