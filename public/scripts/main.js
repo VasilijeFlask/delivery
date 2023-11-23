@@ -114,6 +114,15 @@ function addItemToOrderDisplay(itemId) {
 
 // <<< DISPLAYING TOTAL ORDER >>> //
 document.addEventListener('DOMContentLoaded', function() {
+
+  function disableBodyScroll() {
+    document.body.style.overflow = 'hidden';
+  }
+
+  function enableBodyScroll() {
+    document.body.style.overflow = '';
+  }
+
   var viewOrder = document.querySelector('.view-order');
   var expandOrder = document.querySelector('.expand-order');
   var overlay = document.querySelector('.overlay');
@@ -124,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
     expandOrder.style.visibility = 'visible';
     expandOrder.style.maxHeight = '96%'; 
     overlay.style.display = 'block';
+    disableBodyScroll();
   });
 
   overlay.addEventListener('click', function() {
@@ -132,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
     expandOrder.style.maxHeight = '0';
     overlay.style.display = 'none';
     viewOrder.style.display = 'flex'; 
+    enableBodyScroll()
   });
 
   exit.addEventListener('click', function() {
@@ -140,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
     expandOrder.style.maxHeight = '0';
     overlay.style.display = 'none';
     viewOrder.style.display = 'flex';
+    enableBodyScroll()
   })
 });
 
