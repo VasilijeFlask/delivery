@@ -66,7 +66,6 @@ document.querySelectorAll('.add-item').forEach(button => {
     const itemPrice = gridItem.querySelector('.price').textContent;
     const itemImageSrc = gridItem.querySelector('img').src;
 
-    // Add item to order if it hasn't been added yet
     if (!orderItems[itemId]) {
       orderItems[itemId] = {
         name: itemName,
@@ -75,20 +74,17 @@ document.querySelectorAll('.add-item').forEach(button => {
         imageSrc: itemImageSrc
       };
 
-      // Call function to update the order display
       addItemToOrderDisplay(itemId);
     }
 
-    // Disable the "Dodaj" button for this item
     button.disabled = true;
   });
 });
 
 function addItemToOrderDisplay(itemId) {
   const item = orderItems[itemId];
-  const orderDetailsContainer = document.querySelector('.order-details'); // The container where you want to add the item
+  const orderDetailsContainer = document.querySelector('.order-details'); 
 
-  // Create the HTML for the order item
   const orderItemHtml = `
     <div class="order-item" data-id="${itemId}">
       <div class="left">
@@ -99,17 +95,45 @@ function addItemToOrderDisplay(itemId) {
         </div>
       </div>
       <div class="right">
-        <i class="fa fa-minus" aria-hidden="true"></i>
-        <span>${item.count}</span>
-        <i class="fa fa-plus" aria-hidden="true"></i>
-        <i class="fa fa-trash" aria-hidden="true"></i>
+        <i class="fa fa-minus minus" aria-hidden="true"></i>
+        <span class="count">${item.count}</span>
+        <i class="fa fa-plus plus" aria-hidden="true"></i>
+        <i class="fa fa-trash trash" aria-hidden="true"></i>
       </div>
     </div>
   `;
 
-  // Append the item to the order details container
   orderDetailsContainer.insertAdjacentHTML('beforeend', orderItemHtml);
 }
+
+
+document.querySelector('.order-details').addEventListener('click', event => {
+  // Check if the clicked element is a "+" or "-" button
+  if (event.target.closest('.plus') || event.target.closest('.minus')) {
+    const orderItem = event.target.closest('.order-item');
+    const itemId = orderItem.dataset.id;
+    let countElement = orderItem.querySelector('.count');
+    let count = parseInt(countElement.textContent, 10);
+
+    // Check if it's a plus or minus button and update count accordingly
+    if (event.target.closest('.plus')) {
+      count += 1; // Increase count
+    } else if (event.target.closest('.minus') && count > 1) {
+      count -= 1; // Decrease count, ensuring it doesn't go below 1
+    }
+
+    // Update the count in the DOM
+    countElement.textContent = count.toString();
+
+    // Update the count in the orderItems object
+    orderItems[itemId].count = count;
+
+    // Log the new count for debugging
+    console.log(orderItems[itemId].count);
+  }
+});
+
+
 
 
 // <<< DISPLAYING TOTAL ORDER >>> //
