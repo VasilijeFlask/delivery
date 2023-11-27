@@ -73,8 +73,9 @@ document.querySelectorAll('.add-item').forEach(button => {
         count: 1,
         imageSrc: itemImageSrc
       };
-
       addItemToOrderDisplay(itemId);
+      updateItemCount()
+
     }
 
     button.disabled = true;
@@ -108,30 +109,42 @@ function addItemToOrderDisplay(itemId) {
 
 
 document.querySelector('.order-details').addEventListener('click', event => {
-  // Check if the clicked element is a "+" or "-" button
+
   if (event.target.closest('.plus') || event.target.closest('.minus')) {
     const orderItem = event.target.closest('.order-item');
     const itemId = orderItem.dataset.id;
     let countElement = orderItem.querySelector('.count');
     let count = parseInt(countElement.textContent, 10);
 
-    // Check if it's a plus or minus button and update count accordingly
+
     if (event.target.closest('.plus')) {
-      count += 1; // Increase count
+      count += 1; 
     } else if (event.target.closest('.minus') && count > 1) {
-      count -= 1; // Decrease count, ensuring it doesn't go below 1
+      count -= 1; 
     }
 
-    // Update the count in the DOM
     countElement.textContent = count.toString();
 
-    // Update the count in the orderItems object
     orderItems[itemId].count = count;
 
-    // Log the new count for debugging
-    console.log(orderItems[itemId].count);
   }
 });
+
+
+// <<< DISPLAYING MENU ORDER >>> //
+function updateItemCount() {
+  const itemCountElement = document.querySelector('.number-icon');
+  let totalItems = 0;
+  for (const id in orderItems) {
+    totalItems += orderItems[id].count; 
+  }
+  itemCountElement.textContent = totalItems.toString(); 
+  console.log(totalItems); 
+}
+
+
+
+
 
 
 
