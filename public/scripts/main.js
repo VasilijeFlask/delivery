@@ -110,16 +110,12 @@ function addItemToOrderDisplay(itemId) {
 
 
 document.querySelector('.order-details').addEventListener('click', event => {
-  // Find the closest parent .order-item element from the clicked target
   const orderItem = event.target.closest('.order-item');
-  if (!orderItem) return; // Exit early if no order-item is found
+  if (!orderItem) return; 
 
-  // Retrieve the item ID
   const itemId = orderItem.dataset.id;
 
-  // Check if the plus button was clicked
   if (event.target.closest('.plus')) {
-    // Find the .count element and increment the count
     let countElement = orderItem.querySelector('.count');
     let count = parseInt(countElement.textContent, 10);
     count += 1;
@@ -127,9 +123,7 @@ document.querySelector('.order-details').addEventListener('click', event => {
     orderItems[itemId].count = count;
   }
 
-  // Check if the minus button was clicked
   else if (event.target.closest('.minus')) {
-    // Find the .count element and decrement the count, if greater than 1
     let countElement = orderItem.querySelector('.count');
     let count = parseInt(countElement.textContent, 10);
     if (count > 1) {
@@ -139,44 +133,32 @@ document.querySelector('.order-details').addEventListener('click', event => {
     }
   }
 
-  // Check if the trash button was clicked
   else if (event.target.closest('.trash')) {
-    // Remove the item element from the DOM
     orderItem.remove();
-    
-    // Remove the item from the orderItems object
     delete orderItems[itemId];
-
     const addButton = document.querySelector(`button[data-id="${itemId}"]`);
     if (addButton) {
       addButton.disabled = false;
     }
-
-    // Update the total number of items displayed
     updateItemCount();
   }
 });
 
-// Function to update the total number of items
 function updateItemCount() {
   const itemCountElement = document.querySelector('.number-icon');
-  let totalItems = 0;
-  for (const id in orderItems) {
-    totalItems += orderItems[id].count;
-  }
-  itemCountElement.textContent = totalItems.toString(); 
+  let totalUniqueItems = Object.keys(orderItems).length; // Count the number of unique items
+  itemCountElement.textContent = totalUniqueItems.toString(); // Update the text content with the total number of unique items
 }
-
 
 
 // <<< DISPLAYING TOTAL ORDER >>> //
 document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelectorAll('.grid-item').forEach(gridItem => {
-    const itemId = gridItem.dataset.id; // make sure each .grid-item has a data-id attribute
+    const itemId = gridItem.dataset.id; 
     const addButton = gridItem.querySelector('.add-item');
     if (addButton) {
-      addButton.setAttribute('data-id', itemId); // Set the data-id attribute on the "Dodaj" button
+      addButton.setAttribute('data-id', itemId); 
     }
   });
 
