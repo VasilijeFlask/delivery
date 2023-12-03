@@ -1,60 +1,4 @@
 
-// <<< MENU PAGE SCROLL AND FOCUS >>> //
-document.addEventListener('DOMContentLoaded', function() {
-
-    const navbar = document.getElementById('menu-nav');
-    const navLinks = navbar.querySelectorAll('a');
-  
-    navLinks.forEach(link => {
-      link.addEventListener('click', function(event) {
-        event.preventDefault();  
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        const offsetPosition = targetElement.offsetTop - navbar.offsetHeight;  
-  
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-        });
-      });
-    });
-  });
-  
-function updateActiveNav() {
-
-  var scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-  
-  var navbarHeight = document.querySelector('.menu-nav').offsetHeight; 
-  
-  var sections = [
-    { id: 'predjela', offset: getElementOffset(document.getElementById('predjela'), navbarHeight) },
-    { id: 'glavna-jela', offset: getElementOffset(document.getElementById('glavna-jela'), navbarHeight) },
-    { id: 'salate', offset: getElementOffset(document.getElementById('salate'), navbarHeight) },
-    { id: 'prilozi', offset: getElementOffset(document.getElementById('prilozi'), navbarHeight) },
-    { id: 'dezert', offset: getElementOffset(document.getElementById('dezert'), navbarHeight) },
-  ];
-
-  sections.forEach(function(section) {
-
-    if (scrollPosition >= section.offset.top - navbarHeight && scrollPosition < section.offset.top + section.offset.height - navbarHeight) {
-      document.querySelectorAll('.menu-nav a').forEach(a => a.classList.remove('active'));
-      document.querySelector(`.menu-nav a[href="#${section.id}"]`).classList.add('active');
-    }
-  });
-}
-
-
-function getElementOffset(element, navbarHeight) {
-
-  var rect = element.getBoundingClientRect();
-  return {
-    top: rect.top + window.pageYOffset - navbarHeight,
-    height: rect.height
-  };
-}
-
-window.addEventListener('scroll', updateActiveNav);
-
 // <<< ADDING ITEMS TO CART >>> //
 let orderItems = {}; 
 
@@ -77,6 +21,7 @@ document.querySelectorAll('.add-item').forEach(button => {
       button.disabled = true;
 
       updateItemCount()
+      updateFinalPrice()
 
     }
 
@@ -109,6 +54,8 @@ function addItemToOrderDisplay(itemId) {
 }
 
 
+
+
 document.querySelector('.order-details').addEventListener('click', event => {
   const orderItem = event.target.closest('.order-item');
   if (!orderItem) return; 
@@ -121,6 +68,7 @@ document.querySelector('.order-details').addEventListener('click', event => {
     count += 1;
     countElement.textContent = count.toString();
     orderItems[itemId].count = count;
+    updateFinalPrice()
   }
 
   else if (event.target.closest('.minus')) {
@@ -131,6 +79,7 @@ document.querySelector('.order-details').addEventListener('click', event => {
       countElement.textContent = count.toString();
       orderItems[itemId].count = count;
     }
+    updateFinalPrice()
   }
 
   else if (event.target.closest('.trash')) {
@@ -141,13 +90,30 @@ document.querySelector('.order-details').addEventListener('click', event => {
       addButton.disabled = false;
     }
     updateItemCount();
+    updateFinalPrice()
   }
+
+
 });
+
+function updateFinalPrice() {
+  let totalPrice = 0
+
+  for (const id in orderItems) {
+    const item = orderItems[id];
+    totalPrice += item.price * item.count;
+  }
+
+  const formattedPrice = totalPrice.toFixed(2);
+  
+  const finalPrice = document.querySelector('.final-price');
+  finalPrice.textContent = `RSD ${formattedPrice}`
+}
 
 function updateItemCount() {
   const itemCountElement = document.querySelector('.number-icon');
-  let totalUniqueItems = Object.keys(orderItems).length; // Count the number of unique items
-  itemCountElement.textContent = totalUniqueItems.toString(); // Update the text content with the total number of unique items
+  let totalUniqueItems = Object.keys(orderItems).length; 
+  itemCountElement.textContent = totalUniqueItems.toString(); 
 }
 
 
