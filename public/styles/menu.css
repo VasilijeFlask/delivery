@@ -308,7 +308,10 @@ h2 {
 }
 
 .grid-item {
-    border: 1px solid #D3D3D3; 
+    border-width: 1px;  
+    border-style: solid;
+    border-color: #D3D3D3;
+    background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     transition: scale 0.3s ease; 
     border-radius: 5px;

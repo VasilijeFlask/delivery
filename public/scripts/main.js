@@ -19,6 +19,10 @@ document.querySelectorAll('.add-item').forEach(button => {
       };
       addItemToOrderDisplay(itemId);
       button.disabled = true;
+      gridItem.style.borderColor = '#3ABCEE';
+      gridItem.style.backgroundColor = '#EBF8FD'
+      gridItem.style.borderWidth = '2px'
+      
 
       updateItemCount()
       updateFinalPrice()
@@ -85,16 +89,40 @@ document.querySelector('.order-details').addEventListener('click', event => {
   else if (event.target.closest('.trash')) {
     orderItem.remove();
     delete orderItems[itemId];
+  
     const addButton = document.querySelector(`button[data-id="${itemId}"]`);
     if (addButton) {
       addButton.disabled = false;
+  
+      const relatedGridItem = addButton.closest('.grid-item');
+      if (relatedGridItem) {
+        relatedGridItem.style.borderColor = '#D3D3D3';
+        relatedGridItem.style.backgroundColor = 'white'
+        relatedGridItem.style.borderWidth = '1px'
+      }
     }
+  
     updateItemCount();
-    updateFinalPrice()
+    updateFinalPrice();
   }
+  
 
 
 });
+
+document.querySelector('.edit').addEventListener('click', function() {
+
+  const orderEditContainer = document.querySelector('.order-details'); 
+
+  const editElementHTML = `
+  <div class="new-element">
+    <!-- Your new element's content goes here -->
+    <p>Some content for the new element...</p>
+  </div>`
+
+  orderEditContainer.insertAdjacentHTML('beforeend', orderItemHtml);
+
+})
 
 function updateFinalPrice() {
   let totalPrice = 0
