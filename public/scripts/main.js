@@ -1,4 +1,3 @@
-
 // <<< ADDING ITEMS TO CART >>> //
 let orderItems = {}; 
 
@@ -110,19 +109,77 @@ document.querySelector('.order-details').addEventListener('click', event => {
 
 });
 
+
+
+
+function toggleEditOrderMode() {
+  const expandOrder = document.querySelector('.expand-order');
+  const orderDetails = expandOrder.querySelector('.order-details');
+  const editButton = document.querySelector('.edit');
+  const isEditMode = editButton.innerHTML === 'Gotovo';
+
+  if (!isEditMode) {
+    // Switch to edit mode
+    orderDetails.innerHTML = ''; // Clear current content
+    editButton.innerHTML = 'Gotovo';
+
+    // Insert new content for editing
+    const editContainerHTML = `
+      <div class="new-order-edit-container">
+        <div>Dodajte komentar</div>
+        <textarea class="edit-area" name="edit" id="edit" cols="41" rows="15"></textarea>
+        <button class='area-button' >Dodaj</button>
+      </div>`;
+
+    // Append the new content
+    orderDetails.insertAdjacentHTML('beforeend', editContainerHTML);
+    expandOrder.style.display = 'flex'; // Make it visible
+  } else {
+    // Switch back to order view
+    editButton.innerHTML = 'Izmenite';
+
+    // Clear the edit mode content
+    orderDetails.innerHTML = '<h3>Vaša narudžbina</h3>';
+
+    // Rebuild the order view (You can use a function similar to addItemToOrderDisplay for each item)
+    for (const id in orderItems) {
+      const item = orderItems[id]; // Access the item details from orderItems object using its id
+    
+      // Create HTML string for this item, similar to what you have in addItemToOrderDisplay function
+      const orderItemHtml = `
+        <div class="order-item" data-id="${id}">
+          <div class="left">
+            <div><img class="img" src="${item.imageSrc}" alt="${item.name}"></div>
+            <div class="name">
+              <span>${item.name}</span>
+              <span>RSD ${item.price.toFixed(2)}</span>
+            </div>
+          </div>
+          <div class="right">
+            <i class="fa fa-minus minus" aria-hidden="true"></i>
+            <span class="count">${item.count}</span>
+            <i class="fa fa-plus plus" aria-hidden="true"></i>
+            <i class="fa fa-trash trash" aria-hidden="true"></i>
+          </div>
+        </div>`;
+    
+      // Insert this item's HTML into the orderDetails container
+      orderDetails.insertAdjacentHTML('beforeend', orderItemHtml);
+    }
+
+    // Optionally, handle any other changes needed when switching back to order view
+  }
+}
+
+// Attach event listener to the edit button
 document.querySelector('.edit').addEventListener('click', function() {
+  toggleEditOrderMode();
+});
 
-  const orderEditContainer = document.querySelector('.order-details'); 
 
-  const editElementHTML = `
-  <div class="new-element">
-    <!-- Your new element's content goes here -->
-    <p>Some content for the new element...</p>
-  </div>`
 
-  orderEditContainer.insertAdjacentHTML('beforeend', orderItemHtml);
 
-})
+
 
 function updateFinalPrice() {
   let totalPrice = 0
