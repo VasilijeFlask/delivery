@@ -427,3 +427,25 @@ footer {
 .area-button:hover {
     background-color: #34a9d6;
 }
+
+.feedback-animation {
+    background-color: #3ABCEE;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #D3D3D3;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 16px;
+    cursor: default;
+    text-align: center; /* Center the text within the element */
+    animation: fadeInOut 3s;
+    margin-top: 5px;
+  }
+  
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    20%, 80% { opacity: 1; }
+  }
+  
+  

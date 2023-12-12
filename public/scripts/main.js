@@ -134,6 +134,7 @@ function toggleEditOrderMode() {
     // Append the new content
     orderDetails.insertAdjacentHTML('beforeend', editContainerHTML);
     expandOrder.style.display = 'flex'; // Make it visible
+    handleCommentSubmission();
   } else {
     // Switch back to order view
     editButton.innerHTML = 'Izmenite';
@@ -175,6 +176,33 @@ function toggleEditOrderMode() {
 document.querySelector('.edit').addEventListener('click', function() {
   toggleEditOrderMode();
 });
+
+
+function handleCommentSubmission() {
+  const textArea = document.querySelector('.edit-area');
+  const editButton = document.querySelector('.edit');
+  const submitButton = document.querySelector('.area-button');
+  const feedbackContainer = document.querySelector('.order-details');
+
+  submitButton.addEventListener('click', function() {
+    editButton.disabled = true;
+    textArea.value = '';
+
+    const feedbackElement = document.createElement('div');
+    feedbackElement.textContent = 'Komentar dodat!';
+    feedbackElement.className = 'feedback-animation';
+    submitButton.style.display = 'none'
+
+    // Append the feedbackElement within the feedbackContainer
+    feedbackContainer.appendChild(feedbackElement);
+
+    setTimeout(() => {
+      feedbackElement.remove();
+      editButton.disabled = false;
+    }, 3000); 
+  });
+}
+
 
 
 
