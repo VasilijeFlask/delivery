@@ -119,34 +119,29 @@ function toggleEditOrderMode() {
   const isEditMode = editButton.innerHTML === 'Gotovo';
 
   if (!isEditMode) {
-    // Switch to edit mode
-    orderDetails.innerHTML = ''; // Clear current content
-    editButton.innerHTML = 'Gotovo';
 
-    // Insert new content for editing
+    orderDetails.innerHTML = ''; 
+    editButton.innerHTML = 'Gotovo';
+    
+
     const editContainerHTML = `
       <div class="new-order-edit-container">
         <div>Dodajte komentar</div>
-        <textarea class="edit-area" name="edit" id="edit" cols="41" rows="15"></textarea>
+        <textarea class="edit-area" name="edit" id="edit" cols="39" rows="15"></textarea>
         <button class='area-button' >Dodaj</button>
       </div>`;
 
-    // Append the new content
     orderDetails.insertAdjacentHTML('beforeend', editContainerHTML);
-    expandOrder.style.display = 'flex'; // Make it visible
+    expandOrder.style.display = 'flex'; 
     handleCommentSubmission();
   } else {
-    // Switch back to order view
+ 
     editButton.innerHTML = 'Izmenite';
 
-    // Clear the edit mode content
     orderDetails.innerHTML = '<h3>Vaša narudžbina</h3>';
 
-    // Rebuild the order view (You can use a function similar to addItemToOrderDisplay for each item)
     for (const id in orderItems) {
-      const item = orderItems[id]; // Access the item details from orderItems object using its id
-    
-      // Create HTML string for this item, similar to what you have in addItemToOrderDisplay function
+      const item = orderItems[id]; 
       const orderItemHtml = `
         <div class="order-item" data-id="${id}">
           <div class="left">
@@ -164,15 +159,12 @@ function toggleEditOrderMode() {
           </div>
         </div>`;
     
-      // Insert this item's HTML into the orderDetails container
       orderDetails.insertAdjacentHTML('beforeend', orderItemHtml);
     }
 
-    // Optionally, handle any other changes needed when switching back to order view
   }
 }
 
-// Attach event listener to the edit button
 document.querySelector('.edit').addEventListener('click', function() {
   toggleEditOrderMode();
 });
@@ -180,32 +172,26 @@ document.querySelector('.edit').addEventListener('click', function() {
 
 function handleCommentSubmission() {
   const textArea = document.querySelector('.edit-area');
-  const editButton = document.querySelector('.edit');
   const submitButton = document.querySelector('.area-button');
   const feedbackContainer = document.querySelector('.order-details');
 
   submitButton.addEventListener('click', function() {
-    editButton.disabled = true;
     textArea.value = '';
+    
+    //remove event listener here
 
     const feedbackElement = document.createElement('div');
     feedbackElement.textContent = 'Komentar dodat!';
     feedbackElement.className = 'feedback-animation';
     submitButton.style.display = 'none'
 
-    // Append the feedbackElement within the feedbackContainer
     feedbackContainer.appendChild(feedbackElement);
 
     setTimeout(() => {
       feedbackElement.remove();
-      editButton.disabled = false;
     }, 3000); 
   });
 }
-
-
-
-
 
 
 
@@ -241,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+
   function disableBodyScroll() {
     document.body.style.overflow = 'hidden';
   }
@@ -271,6 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
     enableBodyScroll()
   });
 
+  
   exit.addEventListener('click', function() {
     expandOrder.style.opacity = '0';
     expandOrder.style.visibility = 'hidden';
