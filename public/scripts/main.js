@@ -240,12 +240,15 @@ document.addEventListener('DOMContentLoaded', function() {
   var expandOrder = document.querySelector('.expand-order');
   var overlay = document.querySelector('.overlay');
   var exit = document.querySelector('.exit')
-  let checkout = document.querySelector('.checkout')
+  var checkout = document.querySelector('.checkout')
+  var confirmOrder = document.querySelector('.confirm-order');
+
 
   function handleViewClick() {
     expandOrder.style.opacity = '1';
     expandOrder.style.visibility = 'visible';
     expandOrder.style.maxHeight = '96%'; 
+
     overlay.style.display = 'block';
     disableBodyScroll();
   }
@@ -255,6 +258,11 @@ document.addEventListener('DOMContentLoaded', function() {
     expandOrder.style.opacity = '0';
     expandOrder.style.visibility = 'hidden';
     expandOrder.style.maxHeight = '0';
+
+    confirmOrder.style.opacity = '0';
+    confirmOrder.style.visibility = 'hidden';
+    confirmOrder.style.maxHeight = '0';
+
     overlay.style.display = 'none';
     viewOrder.style.display = 'flex';
     enableBodyScroll();
@@ -265,6 +273,11 @@ document.addEventListener('DOMContentLoaded', function() {
     expandOrder.style.opacity = '0';
     expandOrder.style.visibility = 'hidden';
     expandOrder.style.maxHeight = '0';
+
+    confirmOrder.style.opacity = '0';
+    confirmOrder.style.visibility = 'hidden';
+    confirmOrder.style.maxHeight = '0';
+
     overlay.style.display = 'none';
     viewOrder.style.display = 'flex';
     enableBodyScroll();
@@ -274,12 +287,12 @@ document.addEventListener('DOMContentLoaded', function() {
   checkout.addEventListener('click', function() {
 
     setTimeout(function() {
-      let confirmOrder = document.querySelector('.confirm-order');
       confirmOrder.style.opacity = '1';
       confirmOrder.style.visibility = 'visible';
       confirmOrder.style.maxHeight = '96%'; 
     }, 0);
   })
+  
 
 
 
