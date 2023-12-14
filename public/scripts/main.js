@@ -126,7 +126,7 @@ function toggleEditOrderMode() {
 
     const editContainerHTML = `
       <div class="new-order-edit-container">
-        <div>Dodajte komentar</div>
+        <div class='listener-heading'>Dodajte komentar</div>
         <textarea class="edit-area" name="edit" id="edit" cols="39" rows="15"></textarea>
         <button class='area-button' >Dodaj</button>
       </div>`;
@@ -178,7 +178,7 @@ function handleCommentSubmission() {
   submitButton.addEventListener('click', function() {
     textArea.value = '';
     
-    //remove event listener here
+    
 
     const feedbackElement = document.createElement('div');
     feedbackElement.textContent = 'Komentar dodat!';
@@ -249,24 +249,37 @@ document.addEventListener('DOMContentLoaded', function() {
     disableBodyScroll();
   });
 
-  overlay.addEventListener('click', function() {
-    expandOrder.style.opacity = '0';
-    expandOrder.style.visibility = 'hidden';
-    expandOrder.style.maxHeight = '0';
-    overlay.style.display = 'none';
-    viewOrder.style.display = 'flex'; 
-    enableBodyScroll()
-  });
-
-  
-  exit.addEventListener('click', function() {
+  function handleOverlayClick() {
     expandOrder.style.opacity = '0';
     expandOrder.style.visibility = 'hidden';
     expandOrder.style.maxHeight = '0';
     overlay.style.display = 'none';
     viewOrder.style.display = 'flex';
-    enableBodyScroll()
-  })
+    enableBodyScroll();
+  }
+
+  overlay.addEventListener('click', handleOverlayClick);
+
+  function handleExitClick() {
+    expandOrder.style.opacity = '0';
+    expandOrder.style.visibility = 'hidden';
+    expandOrder.style.maxHeight = '0';
+    overlay.style.display = 'none';
+    viewOrder.style.display = 'flex';
+    enableBodyScroll();
+  }
+
+  exit.addEventListener('click', handleExitClick);
+
+  var addComment = 'Dodajte komentar'
+  function removeListeners() {
+    let element = document.querySelector('.listener-heading')
+    if (element.innerHTML === addComment) {
+      exit.removeEventListener('click', handleExitClick);
+      overlay.removeEventListener('click', handleOverlayClick);
+    }
+  }
+  
 });
 
 
