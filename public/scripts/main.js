@@ -240,14 +240,16 @@ document.addEventListener('DOMContentLoaded', function() {
   var expandOrder = document.querySelector('.expand-order');
   var overlay = document.querySelector('.overlay');
   var exit = document.querySelector('.exit')
-  
-  viewOrder.addEventListener('click', function() {
+  let checkout = document.querySelector('.checkout')
+
+  function handleViewClick() {
     expandOrder.style.opacity = '1';
     expandOrder.style.visibility = 'visible';
     expandOrder.style.maxHeight = '96%'; 
     overlay.style.display = 'block';
     disableBodyScroll();
-  });
+  }
+  viewOrder.addEventListener('click', handleViewClick)
 
   function handleOverlayClick() {
     expandOrder.style.opacity = '0';
@@ -257,7 +259,6 @@ document.addEventListener('DOMContentLoaded', function() {
     viewOrder.style.display = 'flex';
     enableBodyScroll();
   }
-
   overlay.addEventListener('click', handleOverlayClick);
 
   function handleExitClick() {
@@ -268,17 +269,31 @@ document.addEventListener('DOMContentLoaded', function() {
     viewOrder.style.display = 'flex';
     enableBodyScroll();
   }
-
   exit.addEventListener('click', handleExitClick);
 
-  var addComment = 'Dodajte komentar'
-  function removeListeners() {
-    let element = document.querySelector('.listener-heading')
-    if (element.innerHTML === addComment) {
-      exit.removeEventListener('click', handleExitClick);
-      overlay.removeEventListener('click', handleOverlayClick);
-    }
-  }
+  checkout.addEventListener('click', function() {
+    handleExitClick()
+    setTimeout(function() {
+      let confirmOrder = document.querySelector('.confirm-order');
+      confirmOrder.style.opacity = '1';
+      confirmOrder.style.visibility = 'visible';
+      confirmOrder.style.maxHeight = '96%'; 
+    }, 600);
+  })
+
+
+
+
+
+  //ovo treba negde iskoristiti
+  // var addComment = 'Dodajte komentar'
+  // function removeListeners() {
+  //   let element = document.querySelector('.listener-heading')
+  //   if (element.innerHTML === addComment) {
+  //     exit.removeEventListener('click', handleExitClick);
+  //     overlay.removeEventListener('click', handleOverlayClick);
+  //   }
+  // }
   
 });
 
