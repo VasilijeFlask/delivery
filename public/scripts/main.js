@@ -272,13 +272,13 @@ document.addEventListener('DOMContentLoaded', function() {
   exit.addEventListener('click', handleExitClick);
 
   checkout.addEventListener('click', function() {
-    handleExitClick()
+
     setTimeout(function() {
       let confirmOrder = document.querySelector('.confirm-order');
       confirmOrder.style.opacity = '1';
       confirmOrder.style.visibility = 'visible';
       confirmOrder.style.maxHeight = '96%'; 
-    }, 600);
+    }, 0);
   })
 
 
