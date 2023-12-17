@@ -93,7 +93,7 @@ h2 {
 .expand-order .exit {
     position: relative;
     left: 500px;
-    bottom: 395px;
+    bottom: 410px;
     color: #808080;
     cursor: pointer;
 }
@@ -121,7 +121,7 @@ h2 {
     color: #D1544E;
     font-weight: 1000;
     padding-bottom: 20px;
-    font-family: cursive;
+    font-family: lato;
 }
 
 .details {
@@ -529,7 +529,8 @@ footer {
     font-size: 40px;
     color: #D1544E;
     font-weight: 900;
-    font-family: cursive;
+    font-family: lato;
+
 }
 
 .price-number {
@@ -542,7 +543,8 @@ footer {
     color: black;
     font-weight: 800;
     font-size: 24px;
-    font-family: cursive;   
+    font-family: lato;
+  
     margin-top: 4px;
 
 }
@@ -558,7 +560,8 @@ footer {
     font-size: 36px;
     color: #D1544E;
     font-weight: 900;
-    font-family: cursive;
+    font-family: lato;
+
 }
 
 .time-number {
@@ -570,7 +573,8 @@ footer {
     font-weight: 600;
     font-size: 20px;
     padding: 10px 10px 0px 10px;
-    font-family: cursive;
+    font-family: lato;
+
 
 }
 
