@@ -284,8 +284,24 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   exit.addEventListener('click', handleExitClick);
 
+  function handleConfirmClick() {
+    expandOrder.style.opacity = '0';
+    expandOrder.style.visibility = 'hidden';
+    expandOrder.style.maxHeight = '0';
+
+    confirmOrder.style.opacity = '0';
+    confirmOrder.style.visibility = 'hidden';
+    confirmOrder.style.maxHeight = '0';
+
+    overlay.style.display = 'block';
+    viewOrder.style.display = 'flex';
+    disableBodyScroll();
+  }
+
+
   checkout.addEventListener('click', function() {
 
+    handleConfirmClick()
     setTimeout(function() {
       confirmOrder.style.opacity = '1';
       confirmOrder.style.visibility = 'visible';
