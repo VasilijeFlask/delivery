@@ -393,9 +393,10 @@ footer {
 
 .new-order-edit-container {
     color: #D1544E;
-    font-size: 26px;
+    font-size: 40px;
     font-weight: 900;
     cursor: default;
+    font-family: lato;
 }
 
 .edit-area {
@@ -596,4 +597,37 @@ footer {
     font-weight: 600;
     cursor: pointer;
     letter-spacing: 1px;
+}
+
+.final-confirm:hover {
+    background-color: #34a9d6;
+}
+
+.confirm-message {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 60vh;
+    background-color: white;
+    position: fixed;
+    top: 20px;
+    right: 100px;
+    z-index: 1000;
+    border-radius: 20px;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    transition: opacity 0.7s ease-out, visibility 0.7s ease-out, max-height 1.5s ease-out;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.message-text {
+    color: #D1544E;
+    font-size: 40px;
+    font-weight: 1000;
+    text-align: center;
+    padding: 30px 0px;
+    font-family: lato;
 }

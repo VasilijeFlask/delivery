@@ -240,8 +240,12 @@ document.addEventListener('DOMContentLoaded', function() {
   var expandOrder = document.querySelector('.expand-order');
   var overlay = document.querySelector('.overlay');
   var exit = document.querySelector('.exit')
+  var exit2 = document.querySelector('.exit2')
   var checkout = document.querySelector('.checkout')
   var confirmOrder = document.querySelector('.confirm-order');
+  var back = document.querySelector('.back')
+  var finalConfirm = document.querySelector('.final-confirm')
+  var confirmMessage = document.querySelector('.confirm-message')
 
 
   function handleViewClick() {
@@ -298,6 +302,24 @@ document.addEventListener('DOMContentLoaded', function() {
     disableBodyScroll();
   }
 
+  function handleFinalConfirm() {
+    expandOrder.style.opacity = '0';
+    expandOrder.style.visibility = 'hidden';
+    expandOrder.style.maxHeight = '0';
+
+    confirmOrder.style.opacity = '0';
+    confirmOrder.style.visibility = 'hidden';
+    confirmOrder.style.maxHeight = '0';
+
+    overlay.style.display = 'none';
+    viewOrder.style.display = 'flex';
+    confirmMessage.style.visibility = 'visible'
+    confirmMessage.style.opacity = '1';
+    confirmMessage.style.maxHeight = '96%'; 
+    disableBodyScroll();
+  }
+
+
 
   checkout.addEventListener('click', function() {
 
@@ -307,11 +329,25 @@ document.addEventListener('DOMContentLoaded', function() {
       confirmOrder.style.visibility = 'visible';
       confirmOrder.style.maxHeight = '96%'; 
     }, 0);
-  })
+  });
   
+  back.addEventListener('click', function() {
+    handleExitClick()
+    handleViewClick()
+  });
 
+  exit2.addEventListener('click', function() {
+    handleExitClick()
+  });
 
-
+  finalConfirm.addEventListener('click', function() {
+    handleFinalConfirm()
+    setTimeout(function() {
+      confirmMessage.style.visibility = 'hidden'
+      confirmMessage.style.opacity = '0';
+      confirmMessage.style.maxHeight = '0'; 
+    }, 3000)
+  });
 
 
   //ovo treba negde iskoristiti
@@ -325,11 +361,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // }
   
 });
-
-
-
-
-
 
 
 
