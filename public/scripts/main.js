@@ -110,8 +110,6 @@ document.querySelector('.order-details').addEventListener('click', event => {
 });
 
 
-
-
 function toggleEditOrderMode() {
   const expandOrder = document.querySelector('.expand-order');
   const orderDetails = expandOrder.querySelector('.order-details');
@@ -206,7 +204,10 @@ function updateFinalPrice() {
   const formattedPrice = totalPrice.toFixed(2);
   
   const finalPrice = document.querySelector('.final-price');
+  const priceNumber = document.querySelector('.price-number')
+
   finalPrice.textContent = `RSD ${formattedPrice}`
+  priceNumber.textContent = `RSD ${formattedPrice}`
 }
 
 function updateItemCount() {
@@ -246,7 +247,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var back = document.querySelector('.back')
   var finalConfirm = document.querySelector('.final-confirm')
   var confirmMessage = document.querySelector('.confirm-message')
-
 
   function handleViewClick() {
     expandOrder.style.opacity = '1';
@@ -341,7 +341,31 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   finalConfirm.addEventListener('click', function() {
+
     handleFinalConfirm()
+    
+    for (const id in orderItems) {
+      const addButton = document.querySelector(`.grid-item[data-id="${id}"] .add-item`);
+      if (addButton) {
+        addButton.disabled = false;
+  
+        const relatedGridItem = addButton.closest('.grid-item');
+        if (relatedGridItem) {
+          relatedGridItem.style.borderColor = '#D3D3D3';
+          relatedGridItem.style.backgroundColor = 'white';
+          relatedGridItem.style.borderWidth = '1px';
+        }
+      }}
+
+    const orderDetailsContainer = document.querySelector('.order-details');
+    const orderItemsElements = orderDetailsContainer.querySelectorAll('.order-item');
+    orderItemsElements.forEach(item => item.remove());
+    orderItems = {};
+
+    updateItemCount();
+    updateFinalPrice();
+
+
     setTimeout(function() {
       confirmMessage.style.visibility = 'hidden'
       confirmMessage.style.opacity = '0';
