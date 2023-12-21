@@ -1,5 +1,5 @@
-// <<< ADDING ITEMS TO CART >>> //
-let orderItems = {}; 
+// ADDING ITEMS TO CART
+let orderItems = {};
 
 document.querySelectorAll('.add-item').forEach(button => {
   button.addEventListener('click', event => {
@@ -21,19 +21,16 @@ document.querySelectorAll('.add-item').forEach(button => {
       gridItem.style.borderColor = '#3ABCEE';
       gridItem.style.backgroundColor = '#EBF8FD'
       gridItem.style.borderWidth = '2px'
-      
 
       updateItemCount()
       updateFinalPrice()
-
     }
-
   });
 });
 
 function addItemToOrderDisplay(itemId) {
   const item = orderItems[itemId];
-  const orderDetailsContainer = document.querySelector('.order-details'); 
+  const orderDetailsContainer = document.querySelector('.order-details');
 
   const orderItemHtml = `
     <div class="order-item" data-id="${itemId}">
@@ -56,12 +53,9 @@ function addItemToOrderDisplay(itemId) {
   orderDetailsContainer.insertAdjacentHTML('beforeend', orderItemHtml);
 }
 
-
-
-
 document.querySelector('.order-details').addEventListener('click', event => {
   const orderItem = event.target.closest('.order-item');
-  if (!orderItem) return; 
+  if (!orderItem) return;
 
   const itemId = orderItem.dataset.id;
 
@@ -72,9 +66,7 @@ document.querySelector('.order-details').addEventListener('click', event => {
     countElement.textContent = count.toString();
     orderItems[itemId].count = count;
     updateFinalPrice()
-  }
-
-  else if (event.target.closest('.minus')) {
+  } else if (event.target.closest('.minus')) {
     let countElement = orderItem.querySelector('.count');
     let count = parseInt(countElement.textContent, 10);
     if (count > 1) {
@@ -83,16 +75,14 @@ document.querySelector('.order-details').addEventListener('click', event => {
       orderItems[itemId].count = count;
     }
     updateFinalPrice()
-  }
-
-  else if (event.target.closest('.trash')) {
+  } else if (event.target.closest('.trash')) {
     orderItem.remove();
     delete orderItems[itemId];
-  
+
     const addButton = document.querySelector(`button[data-id="${itemId}"]`);
     if (addButton) {
       addButton.disabled = false;
-  
+
       const relatedGridItem = addButton.closest('.grid-item');
       if (relatedGridItem) {
         relatedGridItem.style.borderColor = '#D3D3D3';
@@ -100,16 +90,13 @@ document.querySelector('.order-details').addEventListener('click', event => {
         relatedGridItem.style.borderWidth = '1px'
       }
     }
-  
+
     updateItemCount();
     updateFinalPrice();
   }
-  
-
-
 });
 
-
+// ORDER EDIT MODE
 function toggleEditOrderMode() {
   const expandOrder = document.querySelector('.expand-order');
   const orderDetails = expandOrder.querySelector('.order-details');
@@ -117,10 +104,8 @@ function toggleEditOrderMode() {
   const isEditMode = editButton.innerHTML === 'Gotovo';
 
   if (!isEditMode) {
-
-    orderDetails.innerHTML = ''; 
+    orderDetails.innerHTML = '';
     editButton.innerHTML = 'Gotovo';
-    
 
     const editContainerHTML = `
       <div class="new-order-edit-container">
@@ -130,16 +115,14 @@ function toggleEditOrderMode() {
       </div>`;
 
     orderDetails.insertAdjacentHTML('beforeend', editContainerHTML);
-    expandOrder.style.display = 'flex'; 
+    expandOrder.style.display = 'flex';
     handleCommentSubmission();
   } else {
- 
     editButton.innerHTML = 'Izmenite';
-
     orderDetails.innerHTML = '<h3>Vaša narudžbina</h3>';
 
     for (const id in orderItems) {
-      const item = orderItems[id]; 
+      const item = orderItems[id];
       const orderItemHtml = `
         <div class="order-item" data-id="${id}">
           <div class="left">
@@ -156,17 +139,15 @@ function toggleEditOrderMode() {
             <i class="fa fa-trash trash" aria-hidden="true"></i>
           </div>
         </div>`;
-    
+
       orderDetails.insertAdjacentHTML('beforeend', orderItemHtml);
     }
-
   }
 }
 
 document.querySelector('.edit').addEventListener('click', function() {
   toggleEditOrderMode();
 });
-
 
 function handleCommentSubmission() {
   const textArea = document.querySelector('.edit-area');
@@ -175,8 +156,6 @@ function handleCommentSubmission() {
 
   submitButton.addEventListener('click', function() {
     textArea.value = '';
-    
-    
 
     const feedbackElement = document.createElement('div');
     feedbackElement.textContent = 'Komentar dodat!';
@@ -187,12 +166,11 @@ function handleCommentSubmission() {
 
     setTimeout(() => {
       feedbackElement.remove();
-    }, 3000); 
+    }, 3000);
   });
 }
 
-
-
+// UPDATE FUNCTIONS
 function updateFinalPrice() {
   let totalPrice = 0
 
@@ -202,7 +180,7 @@ function updateFinalPrice() {
   }
 
   const formattedPrice = totalPrice.toFixed(2);
-  
+
   const finalPrice = document.querySelector('.final-price');
   const priceNumber = document.querySelector('.price-number')
 
@@ -212,22 +190,19 @@ function updateFinalPrice() {
 
 function updateItemCount() {
   const itemCountElement = document.querySelector('.number-icon');
-  let totalUniqueItems = Object.keys(orderItems).length; 
-  itemCountElement.textContent = totalUniqueItems.toString(); 
+  let totalUniqueItems = Object.keys(orderItems).length;
+  itemCountElement.textContent = totalUniqueItems.toString();
 }
 
-
-// <<< DISPLAYING TOTAL ORDER >>> //
+// DISPLAYING TOTAL ORDER
 document.addEventListener('DOMContentLoaded', function() {
-
   document.querySelectorAll('.grid-item').forEach(gridItem => {
-    const itemId = gridItem.dataset.id; 
+    const itemId = gridItem.dataset.id;
     const addButton = gridItem.querySelector('.add-item');
     if (addButton) {
-      addButton.setAttribute('data-id', itemId); 
+      addButton.setAttribute('data-id', itemId);
     }
   });
-
 
   function disableBodyScroll() {
     document.body.style.overflow = 'hidden';
@@ -251,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function handleViewClick() {
     expandOrder.style.opacity = '1';
     expandOrder.style.visibility = 'visible';
-    expandOrder.style.maxHeight = '96%'; 
+    expandOrder.style.maxHeight = '96%';
 
     overlay.style.display = 'block';
     disableBodyScroll();
@@ -315,22 +290,19 @@ document.addEventListener('DOMContentLoaded', function() {
     viewOrder.style.display = 'flex';
     confirmMessage.style.visibility = 'visible'
     confirmMessage.style.opacity = '1';
-    confirmMessage.style.maxHeight = '96%'; 
+    confirmMessage.style.maxHeight = '96%';
     disableBodyScroll();
   }
 
-
-
   checkout.addEventListener('click', function() {
-
     handleConfirmClick()
     setTimeout(function() {
       confirmOrder.style.opacity = '1';
       confirmOrder.style.visibility = 'visible';
-      confirmOrder.style.maxHeight = '96%'; 
+      confirmOrder.style.maxHeight = '96%';
     }, 0);
   });
-  
+
   back.addEventListener('click', function() {
     handleExitClick()
     handleViewClick()
@@ -341,21 +313,21 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   finalConfirm.addEventListener('click', function() {
-
     handleFinalConfirm()
-    
+
     for (const id in orderItems) {
       const addButton = document.querySelector(`.grid-item[data-id="${id}"] .add-item`);
       if (addButton) {
         addButton.disabled = false;
-  
+
         const relatedGridItem = addButton.closest('.grid-item');
         if (relatedGridItem) {
           relatedGridItem.style.borderColor = '#D3D3D3';
           relatedGridItem.style.backgroundColor = 'white';
           relatedGridItem.style.borderWidth = '1px';
         }
-      }}
+      }
+    }
 
     const orderDetailsContainer = document.querySelector('.order-details');
     const orderItemsElements = orderDetailsContainer.querySelectorAll('.order-item');
@@ -364,30 +336,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateItemCount();
     updateFinalPrice();
-
+    enableBodyScroll()
 
     setTimeout(function() {
       confirmMessage.style.visibility = 'hidden'
       confirmMessage.style.opacity = '0';
-      confirmMessage.style.maxHeight = '0'; 
+      confirmMessage.style.maxHeight = '0';
     }, 3000)
   });
-
-
-  //ovo treba negde iskoristiti
-  // var addComment = 'Dodajte komentar'
-  // function removeListeners() {
-  //   let element = document.querySelector('.listener-heading')
-  //   if (element.innerHTML === addComment) {
-  //     exit.removeEventListener('click', handleExitClick);
-  //     overlay.removeEventListener('click', handleOverlayClick);
-  //   }
-  // }
-  
 });
 
-
-
-
-
-
+//ovo treba negde iskoristiti
+// var addComment = 'Dodajte komentar'
+// function removeListeners() {
+//   let element = document.querySelector('.listener-heading')
+//   if (element.innerHTML === addComment) {
+//     exit.removeEventListener('click', handleExitClick);
+//     overlay.removeEventListener('click', handleOverlayClick);
+//   }
+// }
