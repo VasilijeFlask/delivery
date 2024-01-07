@@ -346,6 +346,10 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+
+
+
+
 //ovo treba negde iskoristiti
 // var addComment = 'Dodajte komentar'
 // function removeListeners() {
@@ -355,3 +359,4 @@ document.addEventListener('DOMContentLoaded', function() {
 //     overlay.removeEventListener('click', handleOverlayClick);
 //   }
 // }
+
