@@ -262,3 +262,49 @@ input {
 	z-index: 100;
 	display: none;
 }
+
+.register-container input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+.register-flex {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.register-flex h1 {
+	position: relative;
+	bottom: 23px;
+}
+
+.register-flex input {
+	position: relative;
+	bottom: 23px;
+}
+
+.register-flex button {
+	position: relative;
+	top: 23px;
+}
+
+.login-before {
+	display: block;
+}
+
+.login-after {
+	display: none;
+}
+
+.forgot-mail {
+	margin-bottom: 70px;
+}
+
+.forgot-button {
+	position: relative;
+	top: 0px;
+}

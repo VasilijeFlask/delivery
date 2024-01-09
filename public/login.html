@@ -8,13 +8,20 @@
 </head>
 <body>
     <div class="container" id="container">
-        <div class="form-container sign-in-container">
+        <div class="form-container sign-in-container login-before">
             <form action="#">
                 <h1>Prijavite se</h1>
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Lozinka" />
-                <a href="#">Zaboravili ste lozinku?</a>
+                <a href="#" class="login-btn">Zaboravili ste lozinku?</a>
                 <button>Prijavite se</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container login-after">
+            <form action="#">
+                <h1>Unesite vaš email</h1>
+                <input type="email" placeholder="Email" class="forgot-mail"/>
+                <button class="forgot-button">Pošaljite</button>
             </form>
         </div>
         <div class="overlay-container">
@@ -29,10 +36,11 @@
         </div>
         <div class="register-container">
             <div class="overlay">
-                <div class="overlay-panel overlay-right">
-                    <p class="p1">Nesto druygo</p>
-                    <p class="p2">Trece</p>
-                    <button>Registrujte konacno</button>
+                <div class="overlay-panel overlay-right register-flex">
+                    <h1>Registrujte se</h1>
+                    <input type="email" placeholder="Email" />
+                    <input type="password" placeholder="Lozinka" />
+                    <button>Registrujte se</button>
                 </div>
             </div>
         </div>
