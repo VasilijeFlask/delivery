@@ -14,11 +14,11 @@
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Lozinka" />
                 <a href="#" class="login-btn">Zaboravili ste lozinku?</a>
-                <button>Prijavite se</button>
+                <button class="confirm-login">Prijavite se</button>
             </form>
         </div>
         <div class="form-container sign-in-container login-after">
-            <form action="#">
+            <form action="">
                 <h1>Unesite vaš email</h1>
                 <input type="email" placeholder="Email" class="forgot-mail"/>
                 <button class="forgot-button">Pošaljite</button>
@@ -30,7 +30,7 @@
                     <h1>Pozdrav narode!</h1>
                     <p class="p1">Unesite svoje podatke i ručajte kao ljudi</p>
                     <p class="p2">Domaća hrana kod vas za 30 minuta</p>
-                    <button class="ghost" id="signUp">Registrujte se</button>
+                    <button class="register-one" id="signUp">Registrujte se</button>
                 </div>
             </div>
         </div>
@@ -38,9 +38,21 @@
             <div class="overlay">
                 <div class="overlay-panel overlay-right register-flex">
                     <h1>Registrujte se</h1>
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Lozinka" />
-                    <button>Registrujte se</button>
+                    <input type="email" placeholder="Email" required/>
+                    <input type="password" placeholder="Lozinka" required/>
+                    <button class="register-two">Dodajte način plaćanja</button>
+                </div>
+            </div>
+        </div>
+        <div class="payment-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right register-flex">
+                    <h1>Unesite karticu</h1>
+                    <input type="text" placeholder="Ime na kartici" required>
+                    <input type="text" placeholder="Broj kartice" required>
+                    <input type="text" placeholder="Datum isteka MM/GG" required>
+                    <input type="text" placeholder="CVV" required>
+                    <button class="register-three">Gotovo</button>
                 </div>
             </div>
         </div>

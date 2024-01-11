@@ -308,3 +308,16 @@ input {
 	position: relative;
 	top: 0px;
 }
+
+.payment-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+	display: none;
+}
+
