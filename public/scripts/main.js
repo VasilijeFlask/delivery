@@ -346,6 +346,25 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// MANIPULATING ORDER
+
+document.querySelectorAll('.add-item').forEach(button => {
+  button.addEventListener('click', function(event) {
+    const newDiv = document.createElement('div');
+    newDiv.className = 'right';
+    newDiv.innerHTML = `
+        <i class="fa fa-minus minus" aria-hidden="true"></i>
+        <span class="count">0</span> <!-- Replace 0 with the item count if needed -->
+        <i class="fa fa-plus plus" aria-hidden="true"></i>
+        <i class="fa fa-trash trash" aria-hidden="true"></i>
+    `;
+
+    // Replace the old button with the new div
+    button.parentNode.replaceChild(newDiv, button);
+  });
+});
+
+
 
 
 
