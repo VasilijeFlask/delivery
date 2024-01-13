@@ -635,3 +635,11 @@ footer {
     padding: 30px 0px;
     font-family: lato;
 }
+
+.btn-correction {
+    padding: 0px;
+}
+
+.remove-item {
+    display: none;
+}

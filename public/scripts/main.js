@@ -350,32 +350,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.querySelectorAll('.add-item').forEach(button => {
   button.addEventListener('click', function(event) {
-    const newDiv = document.createElement('div');
-    newDiv.className = 'right';
-    newDiv.innerHTML = `
-        <i class="fa fa-minus minus" aria-hidden="true"></i>
-        <span class="count">0</span> <!-- Replace 0 with the item count if needed -->
-        <i class="fa fa-plus plus" aria-hidden="true"></i>
-        <i class="fa fa-trash trash" aria-hidden="true"></i>
+    const newBtn = document.createElement('div');
+    newBtn.className = 'right btn-correction'; 
+    newBtn.innerHTML = `
+      <button class="add-item">Izbaci</button>
     `;
 
-    // Replace the old button with the new div
-    button.parentNode.replaceChild(newDiv, button);
+    const addButton = newBtn.querySelector('.add-item');
+    addButton.style.backgroundColor = '#D1544E'; 
+
+    button.parentNode.replaceChild(newBtn, button);
   });
 });
 
-
-
-
-
-
-//ovo treba negde iskoristiti
-// var addComment = 'Dodajte komentar'
-// function removeListeners() {
-//   let element = document.querySelector('.listener-heading')
-//   if (element.innerHTML === addComment) {
-//     exit.removeEventListener('click', handleExitClick);
-//     overlay.removeEventListener('click', handleOverlayClick);
-//   }
-// }
 
