@@ -643,3 +643,17 @@ footer {
 .remove-item {
     display: none;
 }
+
+.add-item-btn {
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #D3D3D3;
+    color: white;
+    background-color: #D1544E;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    height: 30px;
+    width: 160px
+}

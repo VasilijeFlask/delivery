@@ -75,9 +75,9 @@ document.querySelector('.order-details').addEventListener('click', event => {
       orderItems[itemId].count = count;
     }
     updateFinalPrice()
-  } else if (event.target.closest('.trash')) {
-    orderItem.remove();
-    delete orderItems[itemId];
+    } else if (event.target.closest('.trash')) {
+      orderItem.remove();
+      delete orderItems[itemId];
 
     const addButton = document.querySelector(`button[data-id="${itemId}"]`);
     if (addButton) {
@@ -353,14 +353,27 @@ document.querySelectorAll('.add-item').forEach(button => {
     const newBtn = document.createElement('div');
     newBtn.className = 'right btn-correction'; 
     newBtn.innerHTML = `
-      <button class="add-item">Izbaci</button>
+      <button class="add-item-btn">Izbaci</button>
     `;
-
-    const addButton = newBtn.querySelector('.add-item');
-    addButton.style.backgroundColor = '#D1544E'; 
-
     button.parentNode.replaceChild(newBtn, button);
   });
+});
+
+document.querySelector('.menu').addEventListener('click', function(event) {
+  let targetElement = event.target;
+  while (targetElement != null) {
+    if (targetElement.matches('.add-item-btn')) {
+      console.log('Button clicked!');
+      const removeBtn = document.createElement('div');
+      removeBtn.className = 'right btn-correction'; // Note: Corrected the class name here
+      removeBtn.innerHTML = `
+        <button class="add-item">Dodaj</button> <!-- Corrected class name here -->
+      `;
+      targetElement.parentNode.replaceChild(removeBtn, targetElement);
+      break; // Breaking the loop after finding and handling the target element
+    }
+    targetElement = targetElement.parentElement;
+  }
 });
 
 
