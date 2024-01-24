@@ -353,27 +353,55 @@ document.querySelectorAll('.add-item').forEach(button => {
     const newBtn = document.createElement('div');
     newBtn.className = 'right btn-correction'; 
     newBtn.innerHTML = `
-      <button class="add-item-btn">Izbaci</button>
+    <div class="right">
+      <i class="fa fa-minus minus" aria-hidden="true"></i>
+      <span class="count">0</span>
+      <i class="fa fa-plus plus" aria-hidden="true"></i>
+      <i class="fa fa-trash trash" aria-hidden="true"></i>
+    </div>
     `;
     button.parentNode.replaceChild(newBtn, button);
   });
 });
 
+
 document.querySelector('.menu').addEventListener('click', function(event) {
-  let targetElement = event.target;
-  while (targetElement != null) {
-    if (targetElement.matches('.add-item-btn')) {
-      console.log('Button clicked!');
-      const removeBtn = document.createElement('div');
-      removeBtn.className = 'right btn-correction'; // Note: Corrected the class name here
-      removeBtn.innerHTML = `
-        <button class="add-item">Dodaj</button> <!-- Corrected class name here -->
-      `;
-      targetElement.parentNode.replaceChild(removeBtn, targetElement);
-      break; // Breaking the loop after finding and handling the target element
+  const gridItem = event.target.closest('.grid-item');
+  if (!gridItem) return;
+  const itemId = gridItem.dataset.id;
+
+  if (event.target.classList.contains('plus')) {
+    if (orderItems[itemId]) {
+      orderItems[itemId].count += 1; 
+      updateOrderDisplay(itemId); 
     }
-    targetElement = targetElement.parentElement;
+  } else if (event.target.classList.contains('minus')) {
+    if (orderItems[itemId] && orderItems[itemId].count > 1) {
+      orderItems[itemId].count -= 1; 
+      updateOrderDisplay(itemId); 
+    }
+  } else if (event.target.classList.contains('trash')) {
+    if (orderItems[itemId]) {
+      delete orderItems[itemId]; 
+      removeItemFromOrderDisplay(itemId); 
+    }
   }
+
+  updateFinalPrice();
+  updateItemCount();
 });
 
+function updateOrderDisplay(itemId) {
+  const orderItemElement = document.querySelector(`.order-details .order-item[data-id="${itemId}"]`);
+  if (orderItemElement) {
+    const countElement = orderItemElement.querySelector('.count');
+    countElement.textContent = orderItems[itemId].count; 
+  }
+}
 
+function removeItemFromOrderDisplay(itemId) {
+  const orderItemElement = document.querySelector(`.order-details .order-item[data-id="${itemId}"]`);
+  if (orderItemElement) {
+    orderItemElement.remove();
+  }
+}
