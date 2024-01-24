@@ -404,4 +404,18 @@ function removeItemFromOrderDisplay(itemId) {
   if (orderItemElement) {
     orderItemElement.remove();
   }
+
+  const gridItem = document.querySelector(`.menu .grid-item[data-id="${itemId}"]`);
+  if (gridItem) {
+    gridItem.style.borderColor = ''; 
+    gridItem.style.backgroundColor = ''; 
+    gridItem.style.borderWidth = ''; 
+  }
+
+  // If there is an "Add" button associated with this grid-item, re-enable it
+  const addButton = gridItem.querySelector('.add-item');
+  if (addButton) {
+    addButton.disabled = false;
+  }
 }
+
